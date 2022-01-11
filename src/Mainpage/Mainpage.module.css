@@ -1,0 +1,11 @@
+.heading {
+  width: 95%;
+  display: block;
+  border: yellow 2px solid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  overflow: auto;
+  margin: 0 2%;
+}

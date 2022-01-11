@@ -1,0 +1,11 @@
+.modal {
+  border: 2px black solid;
+}
+
+.Body {
+  justify-content: space-evenly;
+}
+
+.Body div {
+  display: inline;
+}

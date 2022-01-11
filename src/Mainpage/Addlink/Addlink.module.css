@@ -1,0 +1,8 @@
+.left {
+  border: blue 2px solid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 0 2%;
+}
