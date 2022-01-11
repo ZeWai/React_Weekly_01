@@ -38,7 +38,7 @@ export default function Addlink(props) {
   //   };
 
   return (
-    <div className={style.left}>
+    <div className={style.addlink}>
       <Button
         variant="primary"
         onClick={() => setModalShow(true)}

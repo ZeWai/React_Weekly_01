@@ -1,14 +1,11 @@
 import style from "./Searchsection.module.css"
-import Searchbar from "./Searchbar"
+import Searchbar from "./Searchbar/Searchbar"
 import { Link } from 'react-router-dom';
 
 export default Search =>{
     return(
-        <div className={style.right}>
-            <div >
-            <h3>Search here</h3>
-            </div>
-            <div style={{display:'inline-block'}}>
+        <div className={style.searchsection}>
+            <div>
             <Searchbar/>
             </div>
         </div>
