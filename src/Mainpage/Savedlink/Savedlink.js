@@ -4,7 +4,6 @@ export default function Savedlink(props) {
 
     return (
         <div className={style.savedlist}>
-            <>
                 {props.links && props.links.length > 0
                     ? props.links.map((link, i) => (
                         <div key={i} className={style.link}>
@@ -15,9 +14,8 @@ export default function Savedlink(props) {
                             </div>
                         </div>
                     ))
-                    : <div> No link was found. Please add or change keyword</div>
+                : <div style={{ cursor:'default'}}> No link was found. Please add link or change keyword.</div>
                 }
-            </>
         </div >
     );
 }

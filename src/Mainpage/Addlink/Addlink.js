@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import style from "./Addlink.module.css";
 import isURL from 'validator/lib/isURL';
@@ -29,7 +29,7 @@ export default function Addlink(props) {
             setErrorMessage('');
         } else
             if (isURL(url)) {
-                setErrorMessage('Valid URL');
+                setErrorMessage('');
             } else {
                 setErrorMessage('Invalid URL');
             }
@@ -41,8 +41,7 @@ export default function Addlink(props) {
         }
     }
     return (
-        <div
-            className={style.addlink}>
+        <div className={style.addlink}>
             <Button
                 onClick={() => {
                     setModal(!modal);
@@ -51,32 +50,41 @@ export default function Addlink(props) {
             >
                 Add Link
             </Button>
-            <Modal show={modal} onHide={modalClose} centered size="lg" >
-                <Modal.Header class={style.header}>Add Link</Modal.Header>
+            <Modal show={modal} onHide={modalClose} centered size="lg">
+                <Modal.Header className={style.modalhearder}>
+                    Saving Link
+                </Modal.Header>
                 <Modal.Body>
-                    <label>Name:</label>
-                    <br />
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.currentTarget.value)}
-                    />
-                    <br />
-                    <label>URL:</label>
-                    <br />
-                    <input
-                        type="text"
-                        value={url}
-                        onChange={validate}
-                        onKeyPress={EnterPress}
-                    />
-                    <br />
-                    <span>{errorMessage}</span>
-                    <br />
+                    <Row>
+                        <Col>
+                            <label>Name:</label>
+                            <br />
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.currentTarget.value)}
+                                size='35'
+                            />
+                        </Col>
+                        <Col>
+                            <label>URL:</label>
+                            <br />
+                            <input
+                                type="text"
+                                value={url}
+                                onChange={validate}
+                                onKeyPress={EnterPress}
+                                size='35'
+                            />
+                            <br />
+                            <span className={style.errorMessage}>{errorMessage}</span>
+                            <br />
+                        </Col>
+                    </Row>
                 </Modal.Body>
                 <Modal.Footer>
                     <span>{error}</span>
-                    <Button variant="primary" onClick={addLink}>
+                    <Button variant="primary" onClick={addLink} className={style.modalbutton}> 
                         Submit
                     </Button>
                 </Modal.Footer>

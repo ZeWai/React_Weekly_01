@@ -29,3 +29,36 @@
     inset -5px -5px 8px rgba(255, 255, 255, 0.9);
   cursor: pointer;
 }
+.errorMessage{
+  color: red;
+}
+
+.modalhearder{
+  background-color:#e3e3e3;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.modalbutton{
+    color: black;
+  border-radius: 50px;
+  border: none;
+background-color: #e3e3e3;
+  box-shadow: inset 5px 5px 5px rgba(227, 227, 227, 0.9),
+    8px 12px 5px rgba(227, 227, 227, 0.9),
+    5px 10px 10px rgba(227, 227, 227, 0.9),
+    inset -5px -5px 8px rgba(0, 0, 0, 0.05);
+}
+.modalbutton:hover {
+  border: none;
+  color: black;
+  background-color: #e3e3e3;
+  border: none;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+    8px 12px 5px rgba(0, 0, 0, 0.05), 5px 10px 10px rgba(0, 0, 0, 0.05),
+    inset -5px -5px 8px rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
