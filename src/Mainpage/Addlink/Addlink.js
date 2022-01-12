@@ -1,52 +1,86 @@
-import style from "./Addlink.module.css";
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import Addlinkmodal from "./Modal/Addlinkmodal";
 import "bootstrap/dist/css/bootstrap.min.css";
+import style from "./Addlink.module.css";
+import isURL from 'validator/lib/isURL';
 
 export default function Addlink(props) {
-  const [modalShow, setModalShow] = useState(false);
-  const handleClose = () => setModalShow(false);
-  const handleShow = () => setModalShow(true);
-  const [name, setName] = useState("");
-  const [tags, setTags] = useState([]);
-  const [url, setURL] = useState("");
-  const storedLinks = localStorage.getItem("links");
-  const parsedLinks =
-    storedLinks === "" || storedLinks === null ? [] : JSON.parse(storedLinks);
-  const [links, setLinks] = useState(
-    Array.isArray(parsedLinks) ? parsedLinks : []
-  );
+    const [errorMessage, setErrorMessage] = useState('')
+    const [error, setError] = useState('')
+    const [modal, setModal] = useState(false);
+    const [name, setName] = useState("");
+    const [url, setURL] = useState("");
+    const modalClose = () => setModal(false);
 
-  const onAddButtonAddLink = (name, url) => {
-    const newLinks = links.concat([
-      {
-        name,
-        url,
-      },
-    ]);
+    const addLink = () => {
+        if (isURL(url)) {
+            props.onAddLinkProps(name, url);
+            setModal(false);
+            setName("");
+            setURL("");
+        } else {
+            setError('Please try again')
+        }
+    };
 
-    setLinks(newLinks);
-    localStorage.setItem("links", JSON.stringify(newLinks));
-  };
-  //   const addLink = () => {
-  //     props.onAddLinkProps(name, url, tags);
-  //     setModal(false);
-  //     setName("");
-  //     setURL("");
-  //     setTags([]);
-  //   };
+    const validate = (e) => {
+        setURL(e.target.value);
+        if (e.target.value === '') {
+            setErrorMessage('');
+        } else
+            if (isURL(url)) {
+                setErrorMessage('Valid URL');
+            } else {
+                setErrorMessage('Invalid URL');
+            }
+    };
 
-  return (
-    <div className={style.addlink}>
-      <Button
-        variant="primary"
-        onClick={() => setModalShow(true)}
-        onAddLinkProps={onAddButtonAddLink}
-      >
-        Add Link
-      </Button>
-      <Addlinkmodal show={modalShow} onHide={handleClose} />
-    </div>
-  );
+    const EnterPress = (e) => {
+        if (e.key === 'Enter') {
+            addLink();
+        }
+    }
+    return (
+        <div
+            className={style.addlink}>
+            <Button
+                onClick={() => {
+                    setModal(!modal);
+                }}
+                className={style.button}
+            >
+                Add Link
+            </Button>
+            <Modal show={modal} onHide={modalClose} centered size="lg" >
+                <Modal.Header class={style.header}>Add Link</Modal.Header>
+                <Modal.Body>
+                    <label>Name:</label>
+                    <br />
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.currentTarget.value)}
+                    />
+                    <br />
+                    <label>URL:</label>
+                    <br />
+                    <input
+                        type="text"
+                        value={url}
+                        onChange={validate}
+                        onKeyPress={EnterPress}
+                    />
+                    <br />
+                    <span>{errorMessage}</span>
+                    <br />
+                </Modal.Body>
+                <Modal.Footer>
+                    <span>{error}</span>
+                    <Button variant="primary" onClick={addLink}>
+                        Submit
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </div>
+    );
 }

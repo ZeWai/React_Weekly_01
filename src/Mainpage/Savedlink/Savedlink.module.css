@@ -3,8 +3,41 @@
   text-align: center;
   overflow: auto;
   margin: 0 2%;
+  height: 40vh;
+  overflow: auto;
 }
-.headling {
-  margin-top: 5px;
-  text-decoration: underline;
+
+.link {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.result {
+  border-radius: 50px;
+  border: #e3e3e3 2px solid;
+  width: 500px;
+  background-color: #e3e3e3;
+  box-shadow: inset 10px 10px 10px rgba(227, 227, 227, 0.9),
+    15px 25px 10px rgba(227, 227, 227, 0.9),
+    10px 20px 20px rgba(227, 227, 227, 0.9),
+    inset -10px -10px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+
+.result:hover {
+  background-color: #e3e3e3;
+  box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05),
+    15px 25px 10px rgba(0, 0, 0, 0.05), 10px 20px 20px rgba(0, 0, 0, 0.05),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+
+.linkname {
+  padding-top: 10px;
+  margin: 0;
+}
+
+.linkurl {
+  color: gray;
+  font-size: 10px;
 }
