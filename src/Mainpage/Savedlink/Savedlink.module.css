@@ -41,3 +41,22 @@
   color: gray;
   font-size: 10px;
 }
+
+.btn {
+  margin-left: 30px;
+
+  border-radius: 50px;
+  width: 100px;
+  border: none;
+  background-color: #f14e4e;
+  box-shadow: inset 10px 10px 10px rgba(227, 227, 227, 0.9),
+    15px 25px 10px rgba(227, 227, 227, 0.9),
+    10px 20px 20px rgba(227, 227, 227, 0.9),
+    inset -10px -10px 15px rgba(0, 0, 0, 0.05);
+}
+.btn:hover {
+  background-color: #f14e4e;
+  box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05),
+    15px 25px 10px rgba(0, 0, 0, 0.05), 10px 20px 20px rgba(0, 0, 0, 0.05),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.9);
+}

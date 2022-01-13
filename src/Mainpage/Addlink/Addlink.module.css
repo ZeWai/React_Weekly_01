@@ -29,12 +29,12 @@
     inset -5px -5px 8px rgba(255, 255, 255, 0.9);
   cursor: pointer;
 }
-.errorMessage{
+.errorMessage {
   color: red;
 }
 
-.modalhearder{
-  background-color:#e3e3e3;
+.modalhearder {
+  background-color: #e3e3e3;
   text-align: center;
   justify-content: center;
   display: flex;
@@ -42,11 +42,11 @@
   font-size: 30px;
 }
 
-.modalbutton{
-    color: black;
+.modalbutton {
+  color: black;
   border-radius: 50px;
   border: none;
-background-color: #e3e3e3;
+  background-color: #e3e3e3;
   box-shadow: inset 5px 5px 5px rgba(227, 227, 227, 0.9),
     8px 12px 5px rgba(227, 227, 227, 0.9),
     5px 10px 10px rgba(227, 227, 227, 0.9),

@@ -13,12 +13,25 @@ export default function Mainpage() {
     const [links, setLinks] = useState(
         Array.isArray(parsedLinks) ? parsedLinks : []
     );
-
+    const [count, setCount] = useState(0);
     const [search, setSearch] = useState("");
     const onSearchBarChange = (search) => {
         setSearch(search);
     };
 
+    const onAddButtonAddLink = (name, url, id) => {
+        setCount(count + 1);
+        id = count + 1;
+        const newLinks = [
+            {
+                name,
+                url,
+                id
+            },
+        ].concat(links);
+        setLinks(newLinks);
+        localStorage.setItem("links", JSON.stringify(newLinks));
+    };
     const filteredLinks = (search) => {
         const lowerSearch = search.toLowerCase();
         return links.filter((link) => {
@@ -28,17 +41,13 @@ export default function Mainpage() {
             );
         });
     };
-    const onAddButtonAddLink = (name, url) => {
-        const newLinks = [
-            {
-                name,
-                url,
-            },
-        ].concat(links);
-        setLinks(newLinks);
-        localStorage.setItem("links", JSON.stringify(newLinks));
-    };
 
+    const removeLink = (id) => {
+        let newObj = [...links];
+        newObj.splice(id, 1);
+        setLinks(newObj);
+        localStorage.setItem("links", JSON.stringify(newObj));
+    };
     return (
         <div>
             <div className={style.body}>
@@ -53,7 +62,7 @@ export default function Mainpage() {
             <br></br>
             <Searchsection onSearchChangeProp={onSearchBarChange} />
             <br></br>
-            <Savedlink links={filteredLinks(search)} />
+            <Savedlink links={filteredLinks(search)} remove={(id) => removeLink(id)} />
         </div>
     );
 }
