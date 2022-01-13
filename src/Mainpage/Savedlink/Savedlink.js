@@ -12,7 +12,7 @@ export default function Savedlink(props) {
                                 <span className={style.linkurl}>{link.url}</span>
                             </p>
                         </div>
-                        <div className={style.btn} id={index} onClick={() => props.remove(index)}>
+                        <div className={style.btn} key={link.name + link.id} onClick={() => props.remove(index)}>
                             <span >Delete</span>
                         </div>
                     </div>
