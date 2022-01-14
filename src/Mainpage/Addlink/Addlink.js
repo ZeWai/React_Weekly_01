@@ -18,6 +18,7 @@ export default function Addlink(props) {
             setModal(false);
             setName("");
             setURL("");
+            setError("");
         } else {
             setError('Please try again')
         }
@@ -84,7 +85,7 @@ export default function Addlink(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <span>{error}</span>
-                    <Button variant="primary" onClick={addLink} className={style.modalbutton}> 
+                    <Button variant="primary" onClick={addLink} className={style.modalbutton}>
                         Submit
                     </Button>
                 </Modal.Footer>
